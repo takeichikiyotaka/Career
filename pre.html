@@ -1,2 +1,124 @@
-Career
-======
+
+<!DOCTYPE html><meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+
+<title> hako</title>
+
+<html>
+<head>
+
+
+<script src="http://test.api.its-mo.com/cgi/loader.cgi?key=JSZ0507342c2283&ver=2.0&api=zdcmap.js&enc=UTF8&force=1&alert=1" type="text/javascript" ></script>
+<script type="text/javascript">
+//<![CDATA[
+    /* 東京 */
+    var map,mrk,msg,
+        lat = 41.818812, lon = 140.788758;
+    var url="./img/tou.jpg";
+    function loadMap() {
+        map = new ZDC.Map(
+            document.getElementById('ZMap'),
+            {
+                latlon: new ZDC.LatLon(lat, lon),
+                zoom:6
+            }
+        );
+
+ 
+	/*畑Aの場所指定*/
+	var latlon = new ZDC.LatLon(41.838200, 140.825266);
+
+        /* マーカを作成 */
+         mrk = new ZDC.Marker(latlon, {
+         color: ZDC.MARKER_COLOR_ID_RED_S,
+         number: ZDC.MARKER_NUMBER_ID_1_S
+        });
+
+        /* マーカを追加 */
+        map.addWidget(mrk);
+
+        /* 吹き出しを作成 */
+       msg = new ZDC.MsgInfo(latlon,
+            {
+                html:'<div>畑A</div><img src='+url+'>',
+                offset: ZDC.Pixel(0, -18)
+            });
+        /* 吹き出しを追加 */
+        map.addWidget(msg);
+
+        /* マーカがクリックされたら吹き出しを表示する関数を実行させる */
+        ZDC.addListener(mrk, ZDC.MARKER_MOUSEUP, function(){msg.open();});
+    
+
+	
+	/*畑Bの指定*/
+	var latlon2 = new ZDC.LatLon(41.843579, 140.803658);
+
+        /* マーカを作成 */
+         var mrk2 = new ZDC.Marker(latlon2, {
+         color: ZDC.MARKER_COLOR_ID_RED_S,
+         number: ZDC.MARKER_NUMBER_ID_2_S
+        });
+
+        /* マーカを追加 */
+        map.addWidget(mrk2);
+
+        /* 吹き出しを作成 */
+       var msg2 = new ZDC.MsgInfo(latlon2,
+            {
+                html:'<div>畑B</div><img src='+url+'>',
+                offset: ZDC.Pixel(0, -18)
+            });
+        /* 吹き出しを追加 */
+        map.addWidget(msg2);
+
+        /* マーカがクリックされたら吹き出しを表示する関数を実行させる */
+        ZDC.addListener(mrk2, ZDC.MARKER_MOUSEUP, function(){msg2.open();});
+    };
+
+
+//]]>
+
+</script>
+</head>
+<body>
+<div id="pagebody">
+<div id="header"><h1><img src="./img/logo.jpg"></a></h1></div>
+<h2></h2>
+<h2></h2>
+<div id="mapname"><h3>空き畑地図</h3></div>
+<div id="farmname"><h3>畑の名前・場所</h3></div>
+<div id="vegname"><h3>栽培する野菜</h3></div>
+<h3>畑の位置</h3>
+<body onload="loadMap();">
+
+<div id="ZMap" style="border:1px solid #777777; width:600px; height:350px; top:250px; left:20px; position:absolute;"></div>
+
+
+<SCRIPT LANGUAGE="JavaScript"> /*野菜の選択 */
+<!--
+function Gazou(mysrc){
+document.myIMG.src=mysrc;
+}
+//-->
+</SCRIPT>
+<center>
+<div id="veg"><img name="myIMG" src="img/1.jpg" border="auto" width="auto" height="auto" ></div>
+<br>
+<div id="button">
+<FORM>
+<INPUT type="radio" name="myRB" onClick="Gazou('img/1.jpg')" checked>とうもろこし
+<INPUT type="radio" name="myRB" onClick="Gazou('img/2.jpeg')">きゃべつ
+<INPUT type="radio" name="myRB" onClick="Gazou('img/3.jpeg')">じゃがいも
+<INPUT type="radio" name="myRB" onClick="Gazou('img/4.jpg')">とまと
+<INPUT type="radio" name="myRB" onClick="Gazou('img/5.png')">その他
+</FORM>
+</div>
+</center>
+
+<div id="farmin"><input type="text" name="函館畑" size="40" maxlength="30" value="(例 函館畑"></div>
+
+<div id="pagebody">
+</body>
+</html>
